@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link"; // Hinzugefügt: Next.js Link-Komponente
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -33,7 +34,9 @@ export default function ContactForm() {
 
       setStatus("error");
       setMessage("Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.");
-    } catch {
+    } catch (error) {
+      // ANPASSUNG 1: Catch-Block gibt den Fehler in der Entwickler-Konsole aus
+      console.error("Fehler beim Senden des Kontaktformulars:", error);
       setStatus("error");
       setMessage("Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.");
     }
@@ -44,7 +47,7 @@ export default function ContactForm() {
       <input
         type="hidden"
         name="access_key"
-        value="2471dbc2-a370-4fee-9674-28248c6d59b9"
+        value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY}
       />
 
       <input
@@ -113,23 +116,24 @@ export default function ContactForm() {
       </div>
 
       <div className="form-consent">
-  <label className="consent-label">
-    <input
-      type="checkbox"
-      name="privacy"
-      required
-    />
-
-    <span>
-      Ich habe die{" "}
-      <a href="/datenschutz" target="_blank" rel="noopener noreferrer">
-        Datenschutzerklärung
-      </a>{" "}
-      gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner
-      Anfrage zu.
-    </span>
-  </label>
-</div>
+        {/* ANPASSUNG 2: Input und Label getrennt und semantisch über ID & htmlFor verknüpft */}
+        <input
+          type="checkbox"
+          id="privacy"
+          name="privacy"
+          required
+        />
+        <label htmlFor="privacy" className="consent-label">
+          <span>
+            Ich habe die{" "}
+            <Link href="/datenschutz" target="_blank" rel="noopener noreferrer">
+              Datenschutzerklärung
+            </Link>{" "}
+            gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner
+            Anfrage zu.
+          </span>
+        </label>
+      </div>
 
       <button
         type="submit"

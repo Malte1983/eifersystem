@@ -7,10 +7,11 @@ import { useEffect, useState } from "react";
 const navItems = [
   { label: "Leistungen", href: "#leistungen" },
   { label: "Zielgruppen", href: "#zielgruppen" },
+  { label: "Über mich", href: "#ueber-mich" },
   { label: "Referenzen", href: "#referenzen" },
-  { label: "Ablauf", href: "#ablauf" },
+  { label: "Preise", href: "#preise" },
+  { label: "FAQ", href: "#faq" },
 ];
-
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

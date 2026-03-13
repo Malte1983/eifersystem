@@ -306,6 +306,126 @@
   color: rgba(30, 36, 48, 0.86);
 }
 
+/* =========================================
+   Über mich - Founder Block
+   ========================================= */
+.about-founder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.founder-image {
+  border-radius: var(--radius-lg); /* Sorgt für schöne, weiche Ecken */
+  object-fit: cover;
+  box-shadow: 0 14px 28px rgba(18, 59, 93, 0.12);
+  filter: grayscale(20%) contrast(105%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0; /* Verhindert, dass das Bild gestaucht wird */
+}
+
+.founder-image:hover {
+  filter: grayscale(0%) contrast(100%);
+  transform: translateY(-4px);
+}
+
+/* Auf Bildschirmen ab Tablet-Größe stehen Bild und Text nebeneinander */
+@media (min-width: 600px) {
+  .about-founder {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+/* =========================================
+   FAQ Sektion
+   ========================================= */
+/* =========================================
+   FAQ Sektion (Zweispaltig)
+   ========================================= */
+.faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(15, 163, 177, 0.25);
+}
+
+.faq-question {
+  padding: 1.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none; /* Versteckt den Standard-Pfeil */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+/* Versteckt den Pfeil in Safari */
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom Plus/Minus Icon */
+.faq-question::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-question {
+  color: var(--color-secondary);
+  border-bottom: 1px solid rgba(18, 59, 93, 0.05);
+}
+
+.faq-item[open] .faq-question::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 1.5rem;
+  color: rgba(30, 36, 48, 0.86);
+  line-height: 1.6;
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
 @media (min-width: 900px) {
   .services-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -315,10 +435,17 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .about-grid {
+  /* NEU: Das about-grid stapelt sich nun untereinander, da es rechts neben dem Bild steht */
+.about-grid {
     grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: start;
   }
 
+  /* NEU: Das hier einfügen! Schiebt die Box auf Desktop-Geräten nach unten */
+  .about-card {
+    margin-top: 15.5rem; 
+  }
   .trust-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -326,4 +453,383 @@
   .process-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .faq-list {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start; /* Verhindert, dass kurze Fragen künstlich in die Länge gezogen werden */
+    gap: 1.5rem;
+  }
+
+}
+
+
+/* =========================================
+   PRICING V2 – richer / deeper / more premium
+   ========================================= */
+
+.pricing-swiper-wrapper {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 0 4rem 0;
+  position: relative;
+}
+
+.mySwiper {
+  width: 100%;
+  /* Mehr Platz nach oben, damit das Badge absolut frei atmen kann! */
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+  overflow: visible;
+}
+
+.swipe-text {
+  margin-bottom: 15px;
+}
+
+.pricing-slide {
+  width: 82% !important;
+  max-width: 345px !important;
+  height: auto;
+  opacity: 0.5;
+  filter: blur(1.2px) saturate(0.95);
+  transition: opacity 0.25s ease-out, filter 0.2s ease-out, transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Zwingt den Browser in den 3D-Beschleunigungsmodus */
+}
+
+
+
+.swiper-slide-active {
+  opacity: 1;
+  filter: blur(0) saturate(1);
+}
+
+.swiper-slide-active .pricing-card {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.swiper-slide-prev .pricing-card,
+.swiper-slide-next .pricing-card {
+  transform: scale(0.972);
+}
+
+.pricing-card {
+  position: relative;
+  /* HIER GEÄNDERT: Von 25px auf 35px erhöht, damit das Badge garantiert Platz hat! */
+  margin-top: 35px; 
+  text-align: left;
+  border-radius: 30px;
+  padding: 2.8rem 1.8rem 1.9rem; 
+  display: flex;
+  flex-direction: column;
+  min-height: 525px;
+  /* HIER GEÄNDERT: Von 25px auf 35px angepasst */
+  height: calc(100% - 35px);
+  overflow: visible;
+  
+  border: 1px solid rgba(15, 163, 177, 0.25);
+   background: linear-gradient(150deg, #ffffff 0%, #e1ebf4 100%);
+  box-shadow: 0 16px 40px rgba(18, 59, 93, 0.08);
+  
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.3s ease;
+}
+
+/* Der ::before Effekt ist jetzt viel sanfter und unterstützt den Glow */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 15% 10%, rgba(15, 163, 177, 0.04), transparent 30%);
+  pointer-events: none;
+}
+
+.card-highlight {
+  border: 2px solid var(--color-primary);
+  /* Ein kräftigerer, etwas bläulicherer Verlauf für den Bestseller */
+  background: linear-gradient(150deg, #ffffff 0%, #e1ebf4 100%);
+  /* Der stärkere Glow-Effekt */
+  box-shadow: 0 20px 50px rgba(15, 163, 177, 0.18); 
+}
+
+/* Das Badge sitzt jetzt PERFEKT auf der oberen Rahmenkante */
+.pricing-badge {
+  position: absolute;
+  top: -18px; /* Zieht das Badge halb aus der Karte heraus */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  background: linear-gradient(135deg, #0f6b8a, #0fa3b1);
+  color: #fff;
+  padding: 0.55rem 1.6rem; /* Etwas breiter für einen eleganteren Look */
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow:
+    0 12px 28px rgba(15, 163, 177, 0.26),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+  white-space: nowrap;
+}
+
+.pricing-card-top {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.45rem;
+}
+
+.pricing-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pricing-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.8), rgba(230,245,247,0.85)),
+    linear-gradient(135deg, rgba(15,163,177,0.18), rgba(18,59,93,0.06));
+  color: var(--color-secondary);
+  box-shadow:
+    0 12px 25px rgba(15, 163, 177, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+
+.icon-highlight {
+  background: linear-gradient(135deg, #123b5d 0%, #0fa3b1 100%);
+  color: #fff;
+  box-shadow:
+    0 16px 32px rgba(15, 163, 177, 0.28),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+
+.pricing-card h3 {
+  margin: 0;
+  font-size: 1.72rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: var(--color-primary);
+}
+
+.pricing-desc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(30, 36, 48, 0.7);
+  min-height: 74px;
+  max-width: 27ch;
+}
+
+.pricing-price-box {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(to right, rgba(15, 163, 177, 0.05), transparent);
+  border: none;
+  border-left: 4px solid var(--color-secondary);
+  border-radius: 0 16px 16px 0;
+  display: flex; 
+  align-items: baseline; 
+  gap: 0.5rem; 
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  box-shadow: none; 
+}
+
+.card-highlight .pricing-price-box {
+  background: linear-gradient(to right, rgba(15, 163, 177, 0.1), transparent);
+  border-left: 4px solid var(--color-primary);
+}
+
+.price-amount { 
+  font-size: 2.6rem; 
+  font-weight: 900; 
+  color: var(--color-primary); 
+  letter-spacing: -0.04em; 
+}
+
+.price-from { 
+  font-size: 1rem; 
+  font-weight: 700; 
+  color: rgba(30, 36, 48, 0.45); 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.pricing-features { 
+  list-style: none; 
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 1rem;
+}
+
+.pricing-features li { 
+  display: flex; 
+  gap: 1rem; 
+  align-items: center; 
+  font-size: 0.95rem; 
+  line-height: 1.4; 
+  color: rgba(30, 36, 48, 0.85); 
+  padding: 0.6rem 0;
+  border-bottom: none; 
+}
+
+.pricing-features li svg {
+  background: rgba(15, 163, 177, 0.1); 
+  padding: 4px; 
+  border-radius: 50%; 
+  width: 24px;
+  height: 24px;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.card-highlight .pricing-features li svg {
+  background: var(--color-primary);
+  color: var(--color-white) !important;
+  box-shadow: 0 4px 10px rgba(18, 59, 93, 0.2);
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.text-primary,
+.text-secondary {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.swiper-pagination-bullet {
+  background: rgba(18, 59, 93, 0.18) !important;
+  opacity: 1 !important;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary) !important;
+  transform: scale(1.2);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-primary) !important;
+  background: rgba(255, 255, 255, 0.88);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  border: 1px solid rgba(18, 59, 93, 0.06);
+  box-shadow:
+    0 12px 30px rgba(18, 59, 93, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transform: scale(1.07);
+  box-shadow:
+    0 16px 36px rgba(18, 59, 93, 0.16),
+    inset 0 1px 0 rgba(255,255,255,0.72);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.15rem !important;
+  font-weight: 900;
+}
+
+@media (max-width: 920px) {
+  .mySwiper {
+    padding-top: 3.5rem; /* Etwas mehr Luft für das Badge auf Mobile */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+
+  .pricing-slide {
+    width: 85% !important;
+  }
+
+ .pricing-card {
+    padding: 2.5rem 1.25rem 1.55rem; /* Wieder harmonisches Padding für Mobile */
+    min-height: 480px;
+    border-radius: 24px;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .price-amount {
+    font-size: 2.3rem;
+  }
+
+  .pricing-price-box {
+    padding: 1rem 1.15rem;
+  }
+
+  .pricing-desc {
+    min-height: auto;
+    max-width: none;
+  }
+
+  .swipe-indicator {
+    display: flex !important;
+  }
+}
+
+.swipe-indicator {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+  position: relative;
+  z-index: 50;
+}
+
+.swipe-arrow.left {
+  animation: swipe-bounce-left 1.5s infinite ease-in-out;
+}
+
+.swipe-arrow.right {
+  animation: swipe-bounce-right 1.5s infinite ease-in-out;
+}
+
+@keyframes swipe-bounce-left {
+  0%, 100% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(-6px); opacity: 1; }
+}
+
+@keyframes swipe-bounce-right {
+  0%, 100% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(6px); opacity: 1; }
 }

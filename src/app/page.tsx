@@ -4,6 +4,8 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { Globe, Wrench, Settings } from "lucide-react";
 import Image from "next/image";
+import { Check } from "lucide-react";
+import Pricing3D from "@/components/Pricing3D";
 
 export const metadata: Metadata = {
   title: "Startseite",
@@ -138,24 +140,24 @@ export default function HomePage() {
       </article>
 
 
-      <article className="service-card">
+     <article className="service-card">
         <div className="service-icon">
           <Settings size={28} strokeWidth={1.8} />
         </div>
 
         <div className="service-card-top">
           <span className="service-badge">Support</span>
-          <h3>Wartung, Pflege und technische Unterstützung</h3>
+          <h3>Wartung, Hosting & Pflege</h3>
         </div>
 
         <p>
-          Auch nach dem Go-live begleite ich Ihre Website mit Updates, Pflege
+          Auch nach dem Go-live begleite ich Ihre Website mit dem nötigen Setup, Updates, Pflege
           und kleineren technischen Anpassungen.
         </p>
 
         <ul className="service-list">
+          <li>Einrichtung von Domain, Hosting & E-Mails</li>
           <li>WordPress-Updates und Plugin-Pflege</li>
-          <li>Kleine Änderungen und Korrekturen</li>
           <li>Langfristige Betreuung auf Wunsch</li>
         </ul>
       </article>
@@ -217,16 +219,30 @@ export default function HomePage() {
   </div>
 </section>
 <section id="ueber-mich" className="section">
+  {/* Wir nutzen wieder das originale about-grid */}
   <div className="container about-grid">
+    
     <div className="about-copy">
       <span className="eyebrow">Über mich</span>
       <h2 className="section-title">
         Persönliche Betreuung statt unnötiger Agentur-Komplexität
       </h2>
 
-      <p className="section-text">
-        Mit Eifel-Systems begleite ich Unternehmen bei Webseiten, die nicht nur gut aussehen, sondern im Alltag funktionieren – verständlich, zuverlässig und ohne unnötige Komplexität.
-      </p>
+      {/* NEU: Der kompakte Founder-Block */}
+      <div className="about-founder">
+        <Image
+          src="/malte-portrait.jpg" 
+          alt="Malte Scherdin von Eifel-Systems"
+          width={160}
+          height={160}
+          className="founder-image"
+        />
+        <div className="founder-text">
+          <p className="section-text" style={{ marginTop: 0, marginBottom: 0 }}>
+            Mit Eifel-Systems begleite ich Unternehmen bei Webseiten, die nicht nur gut aussehen, sondern im Alltag funktionieren – verständlich, zuverlässig und ohne unnötige Komplexität.
+          </p>
+        </div>
+      </div>
 
       <p className="about-text">
         Mir ist wichtig, dass Websites nicht nur gut aussehen, sondern auch im
@@ -243,7 +259,6 @@ export default function HomePage() {
 
     <aside className="about-card">
       <h3>Was Ihnen Eifel-Systems bietet</h3>
-
       <ul className="about-list">
         <li>Direkter Ansprechpartner ohne Umwege</li>
         <li>Moderne Webseiten mit klarer technischer Basis</li>
@@ -252,6 +267,7 @@ export default function HomePage() {
         <li>Verständliche Kommunikation ohne Fachchinesisch</li>
       </ul>
     </aside>
+
   </div>
 </section>
 
@@ -395,12 +411,11 @@ export default function HomePage() {
         </p>
       </article>
 
-      <article className="process-card">
+   <article className="process-card">
         <span className="process-step">02</span>
-        <h3>Konzept & Struktur</h3>
+        <h3>Inhalte & Struktur</h3>
         <p>
-          Ich entwickle eine passende Seitenstruktur und eine Lösung, die zu
-          Ihren Inhalten und Zielen passt.
+          Ich entwickle die passende Seitenstruktur. Beim Schreiben der Texte unterstütze ich Sie gerne. Bildmaterial wird von Ihnen geliefert oder wir greifen auf passendes Stockmaterial zurück.
         </p>
       </article>
 
@@ -421,6 +436,93 @@ export default function HomePage() {
           Updates und kleineren Anpassungen.
         </p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="preise" className="section section-alt">
+  <div className="container">
+    <div className="pricing-header" style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 2rem auto" }}>
+      <span className="eyebrow">Transparenz</span>
+      <h2 className="section-title">Klare Pakete, keine versteckten Kosten</h2>
+      <p className="section-text">
+        Jedes Unternehmen ist anders. Wischen Sie durch die Pakete, um eine erste Orientierung zu erhalten. 
+        Im Erstgespräch finden wir die Lösung, die perfekt zu Ihnen passt.
+      </p>
+    </div>
+
+
+{/* HIER WIRD DIE NEUE 3D KOMPONENTE EINGEBUNDEN */}
+    <Pricing3D />
+    
+    <p style={{ textAlign: "center", marginTop: "2rem", fontSize: "0.9rem", color: "rgba(30, 36, 48, 0.6)" }}>
+      Gemäß § 19 UStG wird keine Umsatzsteuer berechnet und ausgewiesen.
+    </p>
+  </div>
+</section>
+
+<section id="faq" className="section section-alt">
+  <div className="container faq-container">
+    <div className="faq-header">
+      <span className="eyebrow">FAQ</span>
+      <h2 className="section-title">Häufige Fragen zur Zusammenarbeit</h2>
+    </div>
+
+    <div className="faq-list">
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Wie lange dauert die Umsetzung einer neuen Website?</summary>
+        <div className="faq-answer">
+          <p>In der Regel dauert die Umsetzung einer Unternehmenswebsite etwa 4 bis 6 Wochen von unserem Erstgespräch bis zum finalen Go-Live. Das hängt etwas vom Umfang und davon ab, wie schnell die Inhalte (Texte/Bilder) vorliegen.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Wer kümmert sich um Texte und Bilder?</summary>
+        <div className="faq-answer">
+          <p>Bildmaterial (z.B. von Ihrem Team oder Ihren Räumlichkeiten) wird idealerweise von Ihnen geliefert. Alternativ suche ich passendes, professionelles Stockmaterial für Sie heraus. Beim Strukturieren und Schreiben der Texte unterstütze ich Sie hingegen sehr gerne!</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Was ist mit Domain, Hosting und E-Mail-Adressen?</summary>
+        <div className="faq-answer">
+          <p>Darum kümmere ich mich! Auf Wunsch übernehme ich das komplette Setup inklusive Domainregistrierung, sicherem Hosting (Serverstandort Deutschland) und der Einrichtung Ihrer geschäftlichen E-Mail-Postfächer.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Gehört die Website danach mir?</summary>
+        <div className="faq-answer">
+          <p>Ja, zu 100 %. Es gibt bei Eifel-Systems keinen "Lock-in-Effekt". Nach Abschluss des Projekts und vollständiger Bezahlung gehen alle Rechte an der Website komplett an Sie über.</p>
+        </div>
+      </details>
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Sieht meine neue Website auch auf dem Smartphone gut aus?</summary>
+        <div className="faq-answer">
+          <p>Selbstverständlich! Heutzutage kommen über 60 % der Website-Besucher über das Smartphone. Jede Website, die ich entwickle, ist zu 100 % responsive und passt sich automatisch an Handys, Tablets und Desktop-Bildschirme an.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Was ist mit Suchmaschinenoptimierung (SEO)?</summary>
+        <div className="faq-answer">
+          <p>Eine saubere technische Basis-Suchmaschinenoptimierung (schnelle Ladezeiten, saubere Überschriften-Struktur, Meta-Beschreibungen) ist bei jedem Projekt von Haus aus inklusive, damit Sie bei Google gut gefunden werden.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Wie läuft die Bezahlung ab?</summary>
+        <div className="faq-answer">
+          <p>In der Regel arbeite ich mit einer fairen Teilzahlung: 40 % der Auftragssumme werden bei Projektstart fällig, die restlichen 60 % erst nach vollständiger Abnahme und Go-Live Ihrer neuen Website.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Kann ich die Inhalte später selbst ändern?</summary>
+        <div className="faq-answer">
+          <p>Wenn wir uns für WordPress als Basis entscheiden, können Sie Texte und Bilder jederzeit ganz einfach selbst austauschen. Sie erhalten von mir zum Abschluss eine kurze Einweisung, wie das System funktioniert.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>

@@ -17,6 +17,7 @@ export default function Footer() {
         <nav className="site-footer-nav" aria-label="Footer Navigation">
           <Link href="/impressum">Impressum</Link>
           <Link href="/datenschutz">Datenschutz</Link>
+          <Link href="/agb" className="footer-link">AGB</Link> 
         </nav>
       </div>
 
