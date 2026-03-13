@@ -6,6 +6,17 @@ import { Globe, Wrench, Settings } from "lucide-react";
 import Image from "next/image";
 import { Check } from "lucide-react";
 import Pricing3D from "@/components/Pricing3D";
+import { 
+  SiNextdotjs, 
+  SiReact, 
+  SiWordpress, 
+  SiVercel, 
+  SiStripe, 
+  SiTypescript, 
+  SiJavascript, 
+  SiGithub, 
+  SiN8N 
+} from "react-icons/si";
 
 export const metadata: Metadata = {
   title: "Startseite",
@@ -25,13 +36,13 @@ export default function HomePage() {
     <div className="hero-copy">
       <span className="eyebrow">Eifel-Systems</span>
 
-      <h1 className="hero-title">
-        Moderne Webseiten für Unternehmen in der Eifel
-      </h1>
+    <h1 className="hero-title">
+  Webseiten, die <span>Kunden gewinnen</span> und Ihnen Zeit sparen.
+</h1>
 
       <p className="hero-text">
-        Ich entwickle moderne Webseiten für Unternehmen, Praxen und Handwerksbetriebe – klar strukturiert,
-        technisch sauber und passend zu Ihrem Arbeitsalltag.
+      Ich entwickle digitale Aushängeschilder für Handwerk,
+      Praxen und den Mittelstand in der Eifel. Keine unpersönlichen Agentur-Prozesse, sondern premium Webdesign, das genau zu Ihrem Arbeitsalltag passt.
       </p>
 
       <div className="hero-actions">
@@ -81,6 +92,56 @@ export default function HomePage() {
     </aside>
   </div>
 </section>
+
+{/* NEU: Vertrauens-Leiste (Dezent mit ECHTEN Logos) */}
+       <div className="tech-stack-wrap">
+  <div className="container tech-stack-inner">
+    <p className="tech-stack-title">Technologien für performante Ergebnisse</p>
+    <div className="tech-stack-logos">
+      
+      <div className="tech-logo-item">
+        <SiTypescript className="tech-icon" title="TypeScript" />
+        <span>TypeScript</span>
+      </div>
+
+      <div className="tech-logo-item">
+        <SiJavascript className="tech-icon" title="JavaScript" />
+        <span>JavaScript</span>
+      </div>
+      
+      <div className="tech-logo-item">
+        <SiNextdotjs className="tech-icon" title="Next.js" />
+        <span>Next.js</span>
+      </div>
+      
+      <div className="tech-logo-item">
+        <SiReact className="tech-icon" title="React" />
+        <span>React</span>
+      </div>
+
+      <div className="tech-logo-item">
+        <SiGithub className="tech-icon" title="GitHub" />
+        <span>GitHub</span>
+      </div>
+      
+      <div className="tech-logo-item">
+        <SiWordpress className="tech-icon" title="WordPress" />
+        <span>WordPress</span>
+      </div>
+      
+      <div className="tech-logo-item">
+        <SiN8N className="tech-icon" title="n8n" />
+        <span>n8n</span>
+      </div>
+      
+      <div className="tech-logo-item">
+        <SiStripe className="tech-icon" title="Stripe" />
+        <span>Stripe</span>
+      </div>
+
+    </div>
+  </div>
+</div>
 
  <section id="leistungen" className="section">
   <div className="container">
@@ -273,23 +334,17 @@ export default function HomePage() {
 
 <section id="referenzen" className="section">
   <div className="container">
-
-    <span className="eyebrow">Referenz</span>
-
-    <h2 className="section-title">
-      Beispielprojekt aus meiner Praxis
-    </h2>
-
+    <span className="eyebrow">Referenzen</span>
+    <h2 className="section-title">Projekte & Konzepte</h2>
     <p className="section-text">
-      Dieses Projekt zeigt, wie ein klarer, moderner Webauftritt mit starker Startseite, direkter Nutzerführung und sauberem Responsive Design aussehen kann.
+      Ein Auszug aus abgeschlossenen Kundenprojekten und modernen Web-Konzepten, 
+      die zeigen, wie ich digitale Identitäten gestalte.
     </p>
 
-    <div className="references-grid references-grid-single">
-
+    {/* 1. Haupt-Referenz (Das große Highlight) */}
+    <div className="references-main">
       <article className="reference-card reference-card-real">
-
         <div className="reference-preview reference-preview-image">
-
           <Image
             src="/references/youfit-mockup.png"
             alt="You Fit Outdoor Sports Website"
@@ -298,49 +353,68 @@ export default function HomePage() {
             className="reference-image"
             priority
           />
-
         </div>
-
         <div className="reference-content">
-
-          <span className="reference-tag">
-            Fitness / Outdoor Training
-          </span>
-
+          <span className="reference-tag">Kundenprojekt</span>
           <h3>You Fit Outdoor Sports</h3>
-
           <p>
-            Moderne Website für ein Outdoor-Fitness Angebot mit klarer
-            Nutzerführung, moderner Gestaltung und Fokus auf direkte
-            Kontaktaufnahme und Probetraining.
+            Moderne Website für Outdoor-Fitness mit Fokus auf direkte Kontaktaufnahme.
           </p>
-
           <ul className="reference-list">
-            <li>Klare Landingpage mit starker Hero-Sektion</li>
-            <li>Community- und Trainingsbereiche</li>
-            <li>Testimonials und Kontaktformular integriert</li>
-            <li>Optimiert für Mobile, Tablet und Desktop</li>
+            <li>Starke Landingpage mit Next.js</li>
+            <li>Optimiert für alle Endgeräte</li>
           </ul>
-
           <div className="reference-actions">
-
-            <a
-              href="https://youfitnext.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              Website ansehen
-            </a>
-
+            <a href="https://youfitnext.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Website ansehen</a>
           </div>
-
         </div>
+      </article>
+    </div>
 
+    {/* 2. Demo-Grid (Kleine, feine Karten für die Vercel-Demos) */}
+    <div className="references-demo-grid">
+      
+      {/* Demo 1 */}
+      <article className="reference-card-small">
+        <div className="demo-preview">
+          <div className="demo-overlay">Konzept-Studie</div>
+          {/* Platzhalter für Screenshot - Pfad anpassen */}
+          <Image src="/references/demo-praxis.jpg" alt="Demo Praxis" width={400} height={250} />
+        </div>
+        <div className="demo-info">
+          <h4>Medizinische Praxis</h4>
+          <p>Clean & Vertrauenswürdig</p>
+          <a href="#" className="demo-link">Live Demo &rarr;</a>
+        </div>
+      </article>
+
+      {/* Demo 2 */}
+      <article className="reference-card-small">
+        <div className="demo-preview">
+          <div className="demo-overlay">Konzept-Studie</div>
+          <Image src="/references/demo-handwerk.jpg" alt="Demo Handwerk" width={400} height={250} />
+        </div>
+        <div className="demo-info">
+          <h4>Handwerks-Meister</h4>
+          <p>Fokus auf Leistungen & Referenzen</p>
+          <a href="#" className="demo-link">Live Demo &rarr;</a>
+        </div>
+      </article>
+
+      {/* Demo 3 */}
+      <article className="reference-card-small">
+        <div className="demo-preview">
+          <div className="demo-overlay">Konzept-Studie</div>
+          <Image src="/references/demo-local.jpg" alt="Demo Lokal" width={400} height={250} />
+        </div>
+        <div className="demo-info">
+          <h4>Regionales Business</h4>
+          <p>Modernes Branding & Kontaktfokus</p>
+          <a href="#" className="demo-link">Live Demo &rarr;</a>
+        </div>
       </article>
 
     </div>
-
   </div>
 </section>
 

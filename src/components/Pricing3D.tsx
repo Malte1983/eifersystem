@@ -76,7 +76,7 @@ const packages = [
     title: "Wartung",
     icon: <Wrench size={28} />,
     desc: "Sorgenfreier Betrieb nach dem Launch. Ich kümmere mich um die Technik.",
-    price: "49 €",
+    price: "89 €",
     suffix: "/ Monat",
     highlight: false,
     features: [

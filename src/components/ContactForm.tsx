@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import Link from "next/link"; // Hinzugefügt: Next.js Link-Komponente
+import Link from "next/link"; 
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -27,7 +27,7 @@ export default function ContactForm() {
 
       if (result.success) {
         setStatus("success");
-        setMessage("Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.");
+        setMessage("Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Ich melde mich in Kürze bei Ihnen.");
         form.reset();
         return;
       }
@@ -35,7 +35,6 @@ export default function ContactForm() {
       setStatus("error");
       setMessage("Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.");
     } catch (error) {
-      // ANPASSUNG 1: Catch-Block gibt den Fehler in der Entwickler-Konsole aus
       console.error("Fehler beim Senden des Kontaktformulars:", error);
       setStatus("error");
       setMessage("Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.");
@@ -53,7 +52,7 @@ export default function ContactForm() {
       <input
         type="hidden"
         name="subject"
-        value="Neue Anfrage über eifel-systems.de"
+        value="Neue Projekt-Anfrage über eifel-systems.de"
       />
 
       <input
@@ -104,19 +103,31 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* NEU: Der interaktive Mini-Fragebogen (Dropdown) */}
+      <div className="form-field">
+        <label htmlFor="interest">Wofür interessieren Sie sich?</label>
+        <select id="interest" name="Interesse" defaultValue="" required>
+          <option value="" disabled>Bitte wählen...</option>
+          <option value="Neue Website">Komplett neue Website</option>
+          <option value="Redesign">Bestehende Website modernisieren</option>
+          <option value="Shop/Buchung">Online-Shop / Buchungssystem</option>
+          <option value="Wartung">Nur Wartung & Pflege</option>
+          <option value="Sonstiges">Sonstige Anfrage</option>
+        </select>
+      </div>
+
       <div className="form-field">
         <label htmlFor="message">Nachricht</label>
         <textarea
           id="message"
           name="message"
-          placeholder="Erzählen Sie kurz etwas über Ihr Projekt"
-          rows={6}
+          placeholder="Erzählen Sie kurz etwas über Ihre aktuelle Situation oder Ihr Vorhaben..."
+          rows={5}
           required
         />
       </div>
 
       <div className="form-consent">
-        {/* ANPASSUNG 2: Input und Label getrennt und semantisch über ID & htmlFor verknüpft */}
         <input
           type="checkbox"
           id="privacy"
@@ -135,12 +146,14 @@ export default function ContactForm() {
         </label>
       </div>
 
+      {/* NEU: Ein Verkaufs-orientierter Button-Text */}
       <button
         type="submit"
         className="btn btn-primary"
         disabled={status === "loading"}
+        style={{ width: "100%", marginTop: "0.5rem" }}
       >
-        {status === "loading" ? "Wird gesendet..." : "Nachricht senden"}
+        {status === "loading" ? "Anfrage wird gesendet..." : "Jetzt unverbindlich anfragen"}
       </button>
 
       {message && (

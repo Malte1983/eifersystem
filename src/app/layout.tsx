@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import StickyCTA from "@/components/StickyCTA";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
     <html lang="de">
       <body className={`${inter.variable} ${manrope.variable}`}>
         {children}
+        <StickyCTA />
       </body>
     </html>
   );

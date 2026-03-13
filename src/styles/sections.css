@@ -4,6 +4,8 @@
   margin-top: 2.5rem;
 }
 
+
+
 .service-card {
   background: var(--color-white);
   border: 1px solid rgba(18, 59, 93, 0.08);
@@ -832,4 +834,132 @@
 @keyframes swipe-bounce-right {
   0%, 100% { transform: translateX(0); opacity: 0.4; }
   50% { transform: translateX(6px); opacity: 1; }
+}
+
+/* =========================================
+   Tech-Stack / Vertrauens-Leiste (Dezent & Edel)
+   ========================================= */
+.tech-stack-wrap {
+  /* Sehr sanfter Übergang statt harter Box */
+  background: linear-gradient(180deg, rgba(18, 59, 93, 0.01) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(18, 59, 93, 0.03);
+  padding: 2.5rem 0;
+}
+
+.tech-stack-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tech-stack-title {
+  font-size: 0.75rem; /* Etwas kleiner für mehr Zurückhaltung */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(30, 36, 48, 0.35); /* Blasserer Text */
+  margin: 0;
+  text-align: center;
+}
+
+.tech-stack-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* Kleinerer Gap auf Mobile, damit mehr nebeneinander passt */
+  gap: 1.5rem; 
+}
+/* Container für Icon + Text */
+.tech-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  /* Schrift etwas kleiner, damit es dezent bleibt */
+  font-size: 0.9rem; 
+  font-weight: 600;
+  color: rgba(30, 36, 48, 0.25);
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.tech-icon {
+  font-size: 1.4rem; /* Macht die SVG-Logos etwas größer als den Text */
+}
+
+/* Der Premium Hover-Effekt */
+.tech-logo-item:hover {
+  color: var(--color-primary); /* Leuchtet in deinem Agentur-Blau/Türkis */
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 900px) {
+  .tech-stack-logos {
+    gap: 2.5rem; /* Auf Desktop wieder mehr Platz */
+  }
+  .tech-logo-item {
+    font-size: 1rem;
+  }
+}
+/* Spezielles Highlight für n8n beim Hover (da es für Automatisierung steht) */
+.tech-logo-item:hover {
+  filter: grayscale(0%);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary); /* Dein Agentur-Blau/Türkis */
+  color: white;
+  border: none;
+  box-shadow: 0 10px 25px rgba(15, 163, 177, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  animation: slideIn 0.4s ease-out;
+}
+
+/* Der sanfte pulsierende Ring, um Aufmerksamkeit zu erregen */
+.cta-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.6;
+  z-index: -1;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(100px) scale(0.5); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Auf Desktop ausblenden, da dort die Nav-Leiste meist reicht */
+@media (min-width: 1024px) {
+  .sticky-cta {
+    display: none;
+  }
+}
+
+.section-text{
+margin-bottom: 18px;
 }

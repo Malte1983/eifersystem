@@ -141,3 +141,82 @@
     padding: 2rem;
   }
 }
+
+/* Layout für das Highlight-Projekt */
+.references-main {
+  margin-bottom: 3rem;
+}
+
+/* Das Grid für die Demos */
+.references-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.reference-card-small {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.reference-card-small:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+.demo-preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #eee;
+}
+
+.demo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.demo-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(18, 59, 93, 0.85);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.demo-info {
+  padding: 1.25rem;
+}
+
+.demo-info h4 {
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+}
+
+.demo-info p {
+  font-size: 0.9rem;
+  color: rgba(30, 36, 48, 0.6);
+  margin-bottom: 1rem;
+}
+
+.demo-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.demo-link:hover {
+  color: var(--color-primary);
+}
