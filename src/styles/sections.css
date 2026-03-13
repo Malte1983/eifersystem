@@ -1,0 +1,329 @@
+.services-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.service-card {
+  background: var(--color-white);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 163, 177, 0.25);
+  box-shadow: 0 14px 34px rgba(18, 59, 93, 0.12);
+}
+
+.service-card-top {
+  margin-bottom: 1rem;
+}
+
+.service-card-top h3 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}
+
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 0.85rem;
+  border-radius: 999px;
+  background: rgba(15, 163, 177, 0.1);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.service-card p {
+  color: rgba(30, 36, 48, 0.86);
+  margin-bottom: 1.25rem;
+}
+
+.service-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.service-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--color-foreground);
+}
+
+.service-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-accent)
+  );
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 59, 93, 0.12),
+    rgba(15, 163, 177, 0.16),
+    rgba(123, 211, 137, 0.14)
+  );
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 24px rgba(18, 59, 93, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    color 0.25s ease, background 0.25s ease;
+}
+
+.service-icon svg {
+  transition: transform 0.25s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(18, 59, 93, 0.14);
+  color: var(--color-secondary);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 59, 93, 0.16),
+    rgba(15, 163, 177, 0.2),
+    rgba(123, 211, 137, 0.18)
+  );
+}
+
+.service-card:hover .service-icon svg {
+  transform: scale(1.06);
+}
+
+.target-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.target-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+}
+
+.target-card h3 {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-bottom: 0.9rem;
+}
+
+.target-card p {
+  color: rgba(30, 36, 48, 0.86);
+  margin-bottom: 1.25rem;
+}
+
+.target-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.target-list li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.target-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+.about-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.about-copy {
+  max-width: 720px;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  color: rgba(30, 36, 48, 0.88);
+  max-width: 64ch;
+  margin-top: 1.25rem;
+}
+
+.about-card {
+  background: var(--color-white);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-card h3 {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+}
+
+.about-list {
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-foreground);
+}
+
+.about-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-accent)
+  );
+}
+
+.trust-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.trust-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.trust-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 163, 177, 0.2);
+  box-shadow: 0 14px 30px rgba(18, 59, 93, 0.12);
+}
+
+.trust-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.trust-card p {
+  color: rgba(30, 36, 48, 0.86);
+}
+
+.process-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.process-card {
+  position: relative;
+  background: var(--color-white);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 163, 177, 0.2);
+  box-shadow: 0 14px 30px rgba(18, 59, 93, 0.12);
+}
+
+.process-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 34px;
+  padding: 0.2rem 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.process-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.process-card p {
+  color: rgba(30, 36, 48, 0.86);
+}
+
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .target-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

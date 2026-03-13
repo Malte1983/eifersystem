@@ -1,0 +1,143 @@
+.references-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.references-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.references-grid-single .reference-card {
+  width: 100%;
+}
+
+.references-grid-single .reference-card-real {
+  justify-self: center;
+}
+
+.reference-card {
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.reference-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(18, 59, 93, 0.12);
+}
+
+.reference-card-real {
+  width: 100%;
+  max-width: 1280px;
+}
+
+.reference-preview {
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reference-preview-image {
+  background:
+    radial-gradient(circle at top right, rgba(123, 211, 137, 0.18), transparent 25%),
+    linear-gradient(
+      135deg,
+      rgba(18, 59, 93, 0.92),
+      rgba(15, 163, 177, 0.78)
+    );
+  border-bottom: 1px solid rgba(18, 59, 93, 0.08);
+}
+
+.reference-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.25));
+  transition: transform 0.35s ease;
+}
+
+.reference-card:hover .reference-image {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.reference-content {
+  padding: 1.5rem;
+}
+
+.reference-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  background: rgba(15, 163, 177, 0.1);
+  color: var(--color-secondary);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.reference-content h3 {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-bottom: 0.85rem;
+}
+
+.reference-content p {
+  color: rgba(30, 36, 48, 0.86);
+  margin-bottom: 1.1rem;
+}
+
+.reference-list {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.reference-list li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+
+.reference-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-accent)
+  );
+}
+
+.reference-actions {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .references-grid-single {
+    grid-template-columns: 1fr;
+  }
+
+  .reference-card-real {
+    display: grid;
+    grid-template-columns: minmax(700px, 1.45fr) minmax(280px, 0.55fr);
+    align-items: stretch;
+    width: 100%;
+    max-width: 1280px;
+  }
+
+  .reference-content {
+    padding: 2rem;
+  }
+}
