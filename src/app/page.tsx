@@ -379,12 +379,12 @@ export default function HomePage() {
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
           {/* Platzhalter für Screenshot - Pfad anpassen */}
-          <Image src="/references/demo-praxis.jpg" alt="Demo Praxis" width={400} height={250} />
+          <Image src="/references/praxis.png" alt="Demo Praxis" width={400} height={250} />
         </div>
         <div className="demo-info">
           <h4>Medizinische Praxis</h4>
           <p>Clean & Vertrauenswürdig</p>
-          <a href="#" className="demo-link">Live Demo &rarr;</a>
+          <a href="/demos/praxis" className="demo-link" target="_blank">Live Demo &rarr;</a>
         </div>
       </article>
 
@@ -392,12 +392,12 @@ export default function HomePage() {
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
-          <Image src="/references/demo-handwerk.jpg" alt="Demo Handwerk" width={400} height={250} />
+          <Image src="/references/handwerk2.png" alt="Demo Handwerk" width={400} height={250} />
         </div>
         <div className="demo-info">
           <h4>Handwerks-Meister</h4>
           <p>Fokus auf Leistungen & Referenzen</p>
-          <a href="#" className="demo-link">Live Demo &rarr;</a>
+          <a href="/demos/handwerk" className="demo-link" target="_blank">Live Demo &rarr;</a>
         </div>
       </article>
 
@@ -405,12 +405,12 @@ export default function HomePage() {
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
-          <Image src="/references/demo-local.jpg" alt="Demo Lokal" width={400} height={250} />
+          <Image src="/references/lokal.png" alt="Demo Lokal" width={400} height={250} />
         </div>
         <div className="demo-info">
           <h4>Regionales Business</h4>
           <p>Modernes Branding & Kontaktfokus</p>
-          <a href="#" className="demo-link">Live Demo &rarr;</a>
+          <a href="/demos/lokal" className="demo-link" target="_blank">Live Demo &rarr;</a>
         </div>
       </article>
 

@@ -35,11 +35,14 @@
   max-width: 1280px;
 }
 
-.reference-preview {
-  padding: 1.25rem;
+.reference-preview, 
+.demo-preview {
+  padding: 2rem; /* Mehr Padding gibt dem Bild Platz zum Atmen */
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* Sauberer Abschluss an den Ecken */
+  background: #f8fafc; /* Hellerer, moderner Hintergrund */
 }
 
 .reference-preview-image {
@@ -53,12 +56,16 @@
   border-bottom: 1px solid rgba(18, 59, 93, 0.08);
 }
 
-.reference-image {
+.reference-image, 
+.demo-preview img {
   display: block;
-  width: 100%;
-  height: auto;
   max-width: 100%;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.25));
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  /* 'contain' sorgt dafür, dass das Bild NIE abgeschnitten wird */
+  object-fit: contain; 
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
   transition: transform 0.35s ease;
 }
 
@@ -170,10 +177,9 @@
 .demo-preview {
   position: relative;
   aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: #eee;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+ 
 }
-
 .demo-preview img {
   width: 100%;
   height: 100%;
