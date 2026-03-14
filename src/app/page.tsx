@@ -56,7 +56,7 @@ export default function HomePage() {
       </div>
 
       <div className="hero-trust">
-        <span className="hero-trust-badge">Next.js & WordPress</span>
+        <span className="hero-trust-badge">Extrem schnell & wartungsarm</span>
         <span className="hero-trust-badge">Für Praxen & Handwerk</span>
         <span className="hero-trust-badge">Persönliche Betreuung</span>
       </div>
@@ -96,7 +96,7 @@ export default function HomePage() {
 {/* NEU: Vertrauens-Leiste (Dezent mit ECHTEN Logos) */}
        <div className="tech-stack-wrap">
   <div className="container tech-stack-inner">
-    <p className="tech-stack-title">Technologien für performante Ergebnisse</p>
+    <p className="tech-stack-title">Modernste Technologie-Standards: Für blitzschnelle Ladezeiten, beste Google-Rankings und maximale Sicherheit.</p>
     <div className="tech-stack-logos">
       
       <div className="tech-logo-item">
@@ -162,7 +162,7 @@ export default function HomePage() {
 
         <div className="service-card-top">
           <span className="service-badge">Next.js</span>
-          <h3>Moderne Webseiten mit Next.js</h3>
+          <h3>High-Performance Websites (Next.js)</h3>
         </div>
 
         <p>
@@ -174,6 +174,7 @@ export default function HomePage() {
           <li>Ideal für Unternehmensseiten mit wenigen Änderungen</li>
           <li>Sehr schnell und modern aufgebaut</li>
           <li>Saubere technische Basis für SEO und Performance</li>
+          <li>Keine anfälligen Plugins, 100 % sicher gegen Hacker</li>
         </ul>
       </article>
 
@@ -197,6 +198,7 @@ export default function HomePage() {
           <li>Einfaches Bearbeiten von Inhalten</li>
           <li>Geeignet für häufige Text- und Bildänderungen</li>
           <li>Ideal für Praxen, Handwerk und lokale Unternehmen</li>
+          <li>Jederzeit flexibel um neue Funktionen erweiterbar</li>
         </ul>
       </article>
 
@@ -220,6 +222,7 @@ export default function HomePage() {
           <li>Einrichtung von Domain, Hosting & E-Mails</li>
           <li>WordPress-Updates und Plugin-Pflege</li>
           <li>Langfristige Betreuung auf Wunsch</li>
+          <li>Regelmäßige Backups für maximale Datensicherheit</li>
         </ul>
       </article>
 
@@ -595,6 +598,27 @@ export default function HomePage() {
         <summary className="faq-question">Kann ich die Inhalte später selbst ändern?</summary>
         <div className="faq-answer">
           <p>Wenn wir uns für WordPress als Basis entscheiden, können Sie Texte und Bilder jederzeit ganz einfach selbst austauschen. Sie erhalten von mir zum Abschluss eine kurze Einweisung, wie das System funktioniert.</p>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">WordPress oder Next.js – was ist das Richtige für mich?</summary>
+        <div className="faq-answer">
+          <p>Das hängt ganz davon ab, wie Sie Ihre Website nutzen möchten:</p>
+          <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
+            <li style={{ marginBottom: "0.5rem" }}><strong>WordPress</strong> ist ideal, wenn Sie regelmäßig selbst neue Bilder hochladen, Texte ändern oder einen Blog führen möchten. Es ist extrem flexibel, benötigt aber regelmäßige Updates.</li>
+            <li><strong>Next.js</strong> ist die Premium-Lösung für Websites, die sich selten ändern (z. B. eine klassische Handwerker- oder Praxis-Seite). Sie bekommen eine maßgeschneiderte, extrem schnelle und 100 % wartungsfreie Website, um die Sie sich nie wieder technisch kümmern müssen.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details className="faq-item" name="faq">
+        <summary className="faq-question">Sie werben mit "Next.js" – was bedeutet das für mich als Kunde?</summary>
+        <div className="faq-answer">
+          <p>Next.js ist eine der modernsten Web-Technologien, die aktuell auch von großen Konzernen genutzt wird. Für Sie als lokales Unternehmen bringt das drei riesige Vorteile: 
+          <strong>1. Höchstgeschwindigkeit:</strong> Ihre Seite lädt in Millisekunden, was Google mit besseren Rankings belohnt. 
+          <strong>2. Sicherheit:</strong> Im Gegensatz zu Standard-Systemen gibt es keine Plugins, die gehackt werden können. 
+          <strong>3. Keine Wartung:</strong> Die Seite läuft einfach stabil, ohne dass Sie jemals lästige System-Updates durchführen müssen.</p>
         </div>
       </details>
     </div>
