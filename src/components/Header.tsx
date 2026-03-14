@@ -68,7 +68,7 @@ export default function Header() {
         </nav>
 
         <a href="#kontakt" className="btn btn-primary header-cta">
-          Anfrage starten
+          Kostenloses Erstgespräch
         </a>
 
         <button
@@ -111,7 +111,7 @@ export default function Header() {
             className="btn btn-primary mobile-menu-cta"
             onClick={closeMenu}
           >
-            Anfrage starten
+            Kostenloses Erstgespräch
           </a>
         </div>
       </div>

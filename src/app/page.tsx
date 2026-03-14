@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { Globe, Wrench, Settings } from "lucide-react";
+import { Globe, Wrench, Settings, Check } from "lucide-react"; // Check hinzugefügt
 import Image from "next/image";
-import { Check } from "lucide-react";
 import Pricing3D from "@/components/Pricing3D";
 import { 
   SiNextdotjs, 
@@ -47,7 +46,7 @@ export default function HomePage() {
 
       <div className="hero-actions">
         <a href="#kontakt" className="btn btn-primary">
-          Projekt anfragen
+          Jetzt unverbindlich anfragen
         </a>
 
         <a href="#leistungen" className="btn btn-secondary">
@@ -93,7 +92,7 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* NEU: Vertrauens-Leiste (Dezent mit ECHTEN Logos) */}
+{/* Vertrauens-Leiste */}
        <div className="tech-stack-wrap">
   <div className="container tech-stack-inner">
     <p className="tech-stack-title">Modernste Technologie-Standards: Für blitzschnelle Ladezeiten, beste Google-Rankings und maximale Sicherheit.</p>
@@ -142,6 +141,26 @@ export default function HomePage() {
     </div>
   </div>
 </div>
+
+{/* NEU: PAIN BLOCK (Schmerz triggern) */}
+<section className="section" style={{ paddingBottom: 0 }}>
+  <div className="container">
+    <div style={{ 
+      background: "rgba(30, 36, 48, 0.03)", 
+      borderRadius: "16px", 
+      padding: "3rem", 
+      textAlign: "center", 
+      border: "1px solid rgba(30, 36, 48, 0.05)" 
+    }}>
+      <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem", color: "#1E2430" }}>
+        Kennen Sie das?
+      </h2>
+      <p style={{ fontSize: "1.1rem", lineHeight: 1.6, color: "rgba(30, 36, 48, 0.8)", maxWidth: "800px", margin: "0 auto" }}>
+        Ihre aktuelle Website sieht aus wie aus dem Jahr 2010, lädt ewig und bei Google sind Sie unsichtbar? Oder Sie haben sich an einem Baukasten versucht, aber es sieht einfach nicht professionell aus? <strong>Das kostet Sie jeden Monat wertvolle Kunden.</strong>
+      </p>
+    </div>
+  </div>
+</section>
 
  <section id="leistungen" className="section">
   <div className="container">
@@ -243,9 +262,9 @@ export default function HomePage() {
     <div className="target-grid">
       <article className="target-card">
         <h3>Praxen</h3>
+        {/* NEU: Nutzenorientierter Text */}
         <p>
-          Seriöse, vertrauensvolle Websites mit klaren Leistungen,
-          Kontaktmöglichkeiten und einer ruhigen, professionellen Gestaltung.
+          Gewinnen Sie Privatpatienten und entlasten Sie Ihr Personal durch intelligente Online-Terminbuchungen und klare Patienten-Infos.
         </p>
         <ul className="target-list">
           <li>Leistungsübersicht</li>
@@ -256,9 +275,9 @@ export default function HomePage() {
 
       <article className="target-card">
         <h3>Handwerksbetriebe</h3>
+        {/* NEU: Nutzenorientierter Text */}
         <p>
-          Klare Seiten für Leistungen, Referenzen und Anfragen – ohne unnötige
-          Komplexität, aber mit modernem und vertrauenswürdigem Auftritt.
+          Heben Sie sich von der Konkurrenz ab. Wir machen Ihre Referenzen sichtbar, damit Sie genau die lukrativen Aufträge und guten Azubis anziehen, die Sie haben wollen.
         </p>
         <ul className="target-list">
           <li>Leistungen klar darstellen</li>
@@ -269,9 +288,9 @@ export default function HomePage() {
 
       <article className="target-card">
         <h3>Lokale Unternehmen</h3>
+        {/* NEU: Nutzenorientierter Text */}
         <p>
-          Webseiten, die regional sichtbar machen, professionell auftreten und
-          technisch sauber umgesetzt sind.
+          Werden Sie in Ihrer Region die erste Wahl. Wir sorgen für eine saubere technische Basis, damit Sie bei Google gefunden werden und Klicks in echte Kunden verwandeln.
         </p>
         <ul className="target-list">
           <li>Moderner Unternehmensauftritt</li>
@@ -282,8 +301,8 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+
 <section id="ueber-mich" className="section">
-  {/* Wir nutzen wieder das originale about-grid */}
   <div className="container about-grid">
     
     <div className="about-copy">
@@ -292,7 +311,6 @@ export default function HomePage() {
         Persönliche Betreuung statt unnötiger Agentur-Komplexität
       </h2>
 
-      {/* NEU: Der kompakte Founder-Block */}
       <div className="about-founder">
         <Image
           src="/malte-portrait.jpg" 
@@ -344,7 +362,6 @@ export default function HomePage() {
       die zeigen, wie ich digitale Identitäten gestalte.
     </p>
 
-    {/* 1. Haupt-Referenz (Das große Highlight) */}
     <div className="references-main">
       <article className="reference-card reference-card-real">
         <div className="reference-preview reference-preview-image">
@@ -374,14 +391,11 @@ export default function HomePage() {
       </article>
     </div>
 
-    {/* 2. Demo-Grid (Kleine, feine Karten für die Vercel-Demos) */}
     <div className="references-demo-grid">
       
-      {/* Demo 1 */}
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
-          {/* Platzhalter für Screenshot - Pfad anpassen */}
           <Image src="/references/praxis2.png" alt="Demo Praxis" width={400} height={250} />
         </div>
         <div className="demo-info">
@@ -391,7 +405,6 @@ export default function HomePage() {
         </div>
       </article>
 
-      {/* Demo 2 */}
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
@@ -404,7 +417,6 @@ export default function HomePage() {
         </div>
       </article>
 
-      {/* Demo 3 */}
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
@@ -528,8 +540,44 @@ export default function HomePage() {
       </p>
     </div>
 
+    {/* NEU: GARANTIEN-BLOCK (Nimmt vor dem Preis die Angst) */}
+    <div style={{ 
+      display: "grid", 
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", 
+      gap: "2rem", 
+      marginBottom: "3rem", 
+      padding: "2rem", 
+      background: "#fff", 
+      borderRadius: "16px",
+      boxShadow: "0 4px 20px rgba(0,0,0,0.03)"
+    }}>
+      <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+        <Check size={24} color="#0070f3" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+        <div>
+          <h4 style={{ margin: "0 0 0.4rem 0", fontSize: "1.1rem" }}>Festpreis-Garantie</h4>
+          <p style={{ margin: 0, fontSize: "0.95rem", color: "rgba(30, 36, 48, 0.7)", lineHeight: 1.5 }}>Keine versteckten Kosten oder böse Überraschungen am Ende des Projekts.</p>
+        </div>
+      </div>
+      
+      <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+        <Check size={24} color="#0070f3" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+        <div>
+          <h4 style={{ margin: "0 0 0.4rem 0", fontSize: "1.1rem" }}>100 % Eigentum</h4>
+          <p style={{ margin: 0, fontSize: "0.95rem", color: "rgba(30, 36, 48, 0.7)", lineHeight: 1.5 }}>Nach Abschluss gehört die Website komplett Ihnen. Keine nervige Abo-Falle.</p>
+        </div>
+      </div>
 
-{/* HIER WIRD DIE NEUE 3D KOMPONENTE EINGEBUNDEN */}
+      <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+        <Check size={24} color="#0070f3" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+        <div>
+          <h4 style={{ margin: "0 0 0.4rem 0", fontSize: "1.1rem" }}>Kein Fachchinesisch</h4>
+          <p style={{ margin: 0, fontSize: "0.95rem", color: "rgba(30, 36, 48, 0.7)", lineHeight: 1.5 }}>Wir sprechen auf Augenhöhe. Verständlich, ehrlich und absolut transparent.</p>
+        </div>
+      </div>
+    </div>
+
+
+    {/* HIER WIRD DIE NEUE 3D KOMPONENTE EINGEBUNDEN */}
     <Pricing3D />
     
     <p style={{ textAlign: "center", marginTop: "2rem", fontSize: "0.9rem", color: "rgba(30, 36, 48, 0.6)" }}>
