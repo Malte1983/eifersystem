@@ -14,7 +14,7 @@ export default function AgbPage() {
           ← Zurück zur Startseite
         </Link>
 
-        <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+        <h1 style={{ fontSize: "clamp(2.0rem, 5vw, 2.5rem)" }}>Allgemeine Geschäftsbedingungen (AGB)</h1>
 
         <h2>§ 1 Geltungsbereich</h2>
         <p>

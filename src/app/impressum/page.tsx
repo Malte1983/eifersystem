@@ -14,7 +14,7 @@ export default function ImpressumPage() {
           ← Zurück zur Startseite
         </Link>
 
-        <h1>Impressum</h1>
+        <h1 style={{ fontSize: "clamp(2.0rem, 5vw, 2.5rem)" }}>Impressum</h1>
 
         <h2>Angaben gemäß § 5 DDG</h2>
         <p>

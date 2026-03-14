@@ -1,704 +1,890 @@
-import { Instagram, MapPin, Star, Heart, Clock, ArrowRight, Coffee } from 'lucide-react';
+import React from 'react';
+import {
+  Instagram,
+  MapPin,
+  Star,
+  Heart,
+  Clock,
+  ArrowRight,
+  Coffee,
+  Phone,
+  UtensilsCrossed,
+  Leaf,
+  Sparkles,
+  CalendarDays,
+} from 'lucide-react';
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
   :root {
-    --cream:    #faf6f0;
-    --parchment:#f2ece0;
-    --warm:     #e8ddd0;
-    --espresso: #2c1a0e;
-    --bark:     #4a2e1a;
-    --terracotta: #c4623a;
-    --terra-light: #e08060;
-    --sage:     #7a9475;
-    --sage-light:#a8c4a2;
-    --gold:     #c8963c;
-    --text:     #2c1a0e;
-    --mid:      #7a6555;
-    --border:   rgba(44,26,14,0.1);
+    --bg: #f6f1e8;
+    --surface: #fffaf3;
+    --surface-strong: #f1e7d8;
+    --surface-dark: #1e2a28;
+    --green: #2f5d50;
+    --green-deep: #203d35;
+    --sage: #7f9a86;
+    --sand: #d8b98d;
+    --peach: #d9896a;
+    --berry: #8f4f4d;
+    --text: #1f2422;
+    --muted: #66706b;
+    --line: rgba(31, 36, 34, 0.1);
+    --white: #ffffff;
+    --shadow-soft: 0 18px 50px rgba(31, 36, 34, 0.08);
+    --shadow-card: 0 24px 70px rgba(31, 36, 34, 0.12);
+    --radius-xl: 34px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --container: 1240px;
   }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
 
   .lg-root {
-    background: var(--cream);
     min-height: 100vh;
-    font-family: 'Lato', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(216, 185, 141, 0.25), transparent 28%),
+      linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
+    font-family: 'Inter', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  /* ── FLOATING NAV ── */
-  .lg-nav-wrap {
-    position: fixed;
-    top: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    width: min(92%, 680px);
-    animation: dropIn 0.7s cubic-bezier(0.16,1,0.3,1) both;
+  .lg-container {
+    width: min(var(--container), calc(100% - 40px));
+    margin: 0 auto;
   }
 
-  .lg-nav {
-    background: rgba(250,246,240,0.85);
+  .lg-header {
+    position: sticky;
+    top: 0;
+    z-index: 60;
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(200,150,60,0.25);
-    border-radius: 100px;
-    padding: 0.8rem 1rem 0.8rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 8px 40px rgba(44,26,14,0.12), 0 1px 0 rgba(255,255,255,0.8) inset;
+    background: rgba(246, 241, 232, 0.82);
+    border-bottom: 1px solid rgba(31, 36, 34, 0.06);
   }
 
-  .lg-logo {
+  .lg-header-inner {
+    min-height: 82px;
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
   }
+
   .lg-logo-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--espresso);
-    line-height: 1;
-    letter-spacing: -0.01em;
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    line-height: 0.95;
+    color: var(--green-deep);
+    letter-spacing: -0.03em;
   }
+
   .lg-logo-tag {
-    font-size: 0.6rem;
+    margin-top: 6px;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--terracotta);
-    margin-top: 1px;
+    color: var(--berry);
   }
 
   .lg-nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 24px;
   }
-  .lg-nav-link {
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--mid);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .lg-nav-link:hover { color: var(--espresso); }
 
+  .lg-nav-link,
   .lg-nav-insta {
-    color: var(--mid);
-    cursor: pointer;
-    transition: color 0.2s;
-    display: flex;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
-  .lg-nav-insta:hover { color: var(--terracotta); }
+
+  .lg-nav-link:hover,
+  .lg-nav-insta:hover {
+    color: var(--green-deep);
+    transform: translateY(-1px);
+  }
+
+  .lg-nav-cta,
+  .lg-btn-primary,
+  .lg-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  }
 
   .lg-nav-cta {
-    background: var(--espresso);
-    color: var(--cream);
-    text-decoration: none;
-    padding: 0.6rem 1.3rem;
-    border-radius: 100px;
-    font-size: 0.78rem;
+    background: var(--green-deep);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 999px;
+    font-size: 0.86rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: all 0.25s;
-    white-space: nowrap;
   }
-  .lg-nav-cta:hover { background: var(--terracotta); transform: scale(1.03); }
 
-  /* ── HERO ── */
+  .lg-nav-cta:hover {
+    background: var(--berry);
+    transform: translateY(-1px);
+  }
+
   .lg-hero {
-    padding: 9rem 2rem 5rem;
     position: relative;
+    padding: 52px 0 40px;
     overflow: hidden;
-    text-align: center;
   }
 
-  /* Warm radial glow */
-  .lg-hero-glow {
+  .lg-hero::before {
+    content: '';
     position: absolute;
-    top: -6rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 600px;
-    background: radial-gradient(ellipse, rgba(200,150,60,0.13) 0%, rgba(196,98,58,0.07) 40%, transparent 70%);
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(127, 154, 134, 0.16), transparent 20%),
+      radial-gradient(circle at 80% 10%, rgba(217, 137, 106, 0.12), transparent 22%);
     pointer-events: none;
   }
 
-  /* Organic blob shapes */
-  .lg-blob {
-    position: absolute;
-    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
-    pointer-events: none;
-  }
-  .lg-blob-1 {
-    width: 320px; height: 280px;
-    background: rgba(122,148,117,0.08);
-    top: 6rem; left: -8rem;
-    animation: float 8s ease-in-out infinite;
-  }
-  .lg-blob-2 {
-    width: 240px; height: 260px;
-    background: rgba(196,98,58,0.07);
-    top: 12rem; right: -6rem;
-    animation: float 10s 2s ease-in-out infinite reverse;
-    border-radius: 50% 65% 40% 60% / 60% 40% 65% 45%;
-  }
-
-  .lg-hero-content {
+  .lg-hero-grid {
     position: relative;
-    z-index: 2;
-    animation: riseUp 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.96fr 1.04fr;
+    gap: 34px;
+    align-items: center;
+    min-height: 760px;
+  }
+
+  .lg-hero-copy {
+    padding: 24px 0;
   }
 
   .lg-award {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: white;
-    border: 1px solid rgba(200,150,60,0.3);
-    padding: 0.45rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 2px 12px rgba(44,26,14,0.07);
-  }
-  .lg-award span {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--espresso);
-  }
-  .lg-award-stars {
-    display: flex;
-    gap: 1px;
+    gap: 12px;
+    background: rgba(255, 250, 243, 0.85);
+    border: 1px solid rgba(47, 93, 80, 0.14);
+    box-shadow: var(--shadow-soft);
+    border-radius: 999px;
+    padding: 10px 16px;
+    margin-bottom: 22px;
   }
 
-  .lg-hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.2rem, 7vw, 6.5rem);
-    font-weight: 400;
-    color: var(--espresso);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.75rem;
+  .lg-award span {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-deep);
   }
-  .lg-hero-title em {
-    font-style: italic;
-    color: var(--terracotta);
-    display: block;
+
+  .lg-award-stars {
+    display: inline-flex;
+    gap: 2px;
   }
 
   .lg-hero-tagline {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.75rem;
+    gap: 14px;
+    margin-bottom: 24px;
   }
-  .lg-tagline-line { width: 40px; height: 1px; background: var(--warm); }
+
+  .lg-tagline-line {
+    width: 42px;
+    height: 1px;
+    background: rgba(47, 93, 80, 0.24);
+  }
+
   .lg-tagline-text {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--mid);
+    color: var(--sage);
+  }
+
+  .lg-hero-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--green-deep);
+    margin-bottom: 20px;
+  }
+
+  .lg-hero-title em {
+    display: block;
+    font-style: italic;
+    color: var(--berry);
   }
 
   .lg-hero-desc {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--mid);
-    font-weight: 300;
-    max-width: 500px;
-    margin: 0 auto 3rem;
+    max-width: 590px;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 30px;
   }
 
   .lg-hero-cta-wrap {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    gap: 14px;
+    margin-bottom: 26px;
   }
 
   .lg-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--terracotta);
+    background: var(--green-deep);
     color: white;
-    text-decoration: none;
-    padding: 0.95rem 2rem;
-    border-radius: 100px;
-    font-size: 0.85rem;
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: all 0.25s;
-    box-shadow: 0 6px 24px rgba(196,98,58,0.3);
-    cursor: pointer;
-    border: none;
+    box-shadow: 0 16px 40px rgba(32, 61, 53, 0.18);
   }
+
   .lg-btn-primary:hover {
-    background: var(--bark);
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(196,98,58,0.35);
+    background: var(--berry);
   }
 
-  .lg-btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.82rem;
-    font-weight: 400;
-    color: var(--mid);
-    text-decoration: none;
-    border-bottom: 1px solid var(--warm);
-    padding-bottom: 2px;
-    transition: all 0.2s;
-  }
-  .lg-btn-ghost:hover { color: var(--espresso); border-color: var(--espresso); }
-
-  /* ── MOSAIC GRID ── */
-  .lg-mosaic {
-    max-width: 960px;
-    margin: 0 auto 2rem;
-    padding: 0 1.5rem;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-rows: 220px 180px;
-    gap: 12px;
-    animation: riseUp 0.8s 0.4s cubic-bezier(0.16,1,0.3,1) both;
-  }
-
-  .lg-tile {
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
-  }
-  .lg-tile:hover { transform: scale(1.025); box-shadow: 0 16px 48px rgba(44,26,14,0.18); }
-  .lg-tile:nth-child(1) { grid-row: 1 / 3; border-radius: 24px; }
-  .lg-tile:nth-child(4) { grid-column: 2 / 4; }
-
-  .lg-tile-inner {
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: flex-end;
-    padding: 1.25rem;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.85);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-  }
-
-  .lg-tile-1 { background: linear-gradient(160deg, #b5734a 0%, #7a4a2a 60%, #4a2c18 100%); }
-  .lg-tile-2 { background: linear-gradient(140deg, #8daa88 0%, #5a7a55 100%); }
-  .lg-tile-3 { background: linear-gradient(140deg, #c4845a 0%, #904a28 100%); }
-  .lg-tile-4 { background: linear-gradient(100deg, #d4a860 0%, #a87838 60%, #6a4820 100%); }
-
-  /* Grain overlay on tiles */
-  .lg-tile-inner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .lg-tile-label {
-    position: relative;
-    z-index: 1;
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 0.35rem 0.8rem;
-    border-radius: 100px;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  /* Floating icons (replaced the original rotating squares) */
-  .lg-floating-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    margin-top: 1rem;
-    margin-bottom: 4.5rem;
-  }
-  .lg-icon-pip {
-    width: 52px; height: 52px;
-    background: white;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 16px rgba(44,26,14,0.1);
-    border: 1px solid rgba(44,26,14,0.06);
-    transition: transform 0.3s;
-  }
-  .lg-icon-pip:nth-child(1) { transform: rotate(3deg); }
-  .lg-icon-pip:nth-child(2) { transform: rotate(-5deg) translateY(-6px); }
-  .lg-icon-pip:nth-child(3) { transform: rotate(8deg); }
-  .lg-icon-pip:hover { transform: rotate(0deg) scale(1.1) translateY(-4px) !important; }
-
-  /* ── FEATURES STRIP ── */
-  .lg-features {
-    background: var(--espresso);
-    padding: 3rem 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-  }
-
-  .lg-feature {
-    padding: 1.25rem 3rem;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    flex: 1;
-    min-width: 180px;
-    max-width: 260px;
-    transition: background 0.2s;
-  }
-  .lg-feature:last-child { border-right: none; }
-  .lg-feature:hover { background: rgba(255,255,255,0.04); }
-
-  .lg-feature-icon {
-    width: 40px; height: 40px;
-    background: rgba(200,150,60,0.12);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-    border: 1px solid rgba(200,150,60,0.2);
-  }
-  .lg-feature-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+  .lg-btn-secondary {
+    background: transparent;
+    color: var(--green-deep);
+    border: 1px solid rgba(47, 93, 80, 0.18);
+    padding: 16px 22px;
+    border-radius: 999px;
+    font-size: 0.9rem;
     font-weight: 700;
-    color: white;
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.01em;
-  }
-  .lg-feature-desc {
-    font-size: 0.78rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-  }
-
-  /* ── INFO ── */
-  .lg-info {
-    padding: 5rem 2rem;
-    max-width: 860px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .lg-info-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .lg-info-label::before { content: ''; width: 20px; height: 1px; background: var(--terracotta); }
-
-  .lg-info-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    font-weight: 400;
-    color: var(--espresso);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
-  }
-  .lg-info-title em { font-style: italic; color: var(--terracotta); }
-
-  .lg-info-text {
-    font-size: 0.92rem;
-    line-height: 1.85;
-    color: var(--mid);
-    font-weight: 300;
-    margin-bottom: 2rem;
-  }
-
-  .lg-hours-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 4px 32px rgba(44,26,14,0.07);
-    border: 1px solid var(--parchment);
-  }
-  .lg-hours-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--espresso);
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .lg-hours-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--parchment);
-    font-size: 0.85rem;
-  }
-  .lg-hours-row:last-child { border-bottom: none; }
-  .lg-hours-day { font-weight: 400; color: var(--mid); }
-  .lg-hours-time { font-weight: 700; color: var(--espresso); font-size: 0.82rem; }
-  .lg-hours-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--sage);
-    animation: pulse 2.5s infinite;
-    display: inline-block;
-    margin-right: 0.5rem;
-  }
-  .lg-address-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-top: 1.25rem;
-    font-size: 0.82rem;
-    color: var(--mid);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  /* ── FOOTER ── */
-  .lg-footer {
-    background: var(--parchment);
-    border-top: 1px solid var(--warm);
-    padding: 2.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .lg-footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--espresso);
-  }
-  .lg-footer-brand em { font-style: italic; color: var(--terracotta); }
-  .lg-footer-note {
-    font-size: 0.75rem;
-    color: var(--mid);
-    font-weight: 300;
     letter-spacing: 0.04em;
   }
 
-  /* ── ANIMATIONS ── */
-  @keyframes dropIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-  }
-  @keyframes riseUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50%       { transform: translateY(-18px) rotate(3deg); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
+  .lg-btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: var(--berry);
+    color: var(--berry);
+    background: rgba(255,255,255,0.5);
   }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 720px) {
-    .lg-mosaic {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px 180px 160px;
+  .lg-hero-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .lg-hero-point {
+    padding: 18px;
+    background: rgba(255, 250, 243, 0.8);
+    border: 1px solid rgba(31, 36, 34, 0.06);
+    border-radius: 20px;
+    box-shadow: 0 10px 24px rgba(31, 36, 34, 0.04);
+  }
+
+  .lg-hero-point-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--berry);
+  }
+
+  .lg-hero-point p {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--green-deep);
+  }
+
+  .lg-hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 0.86fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .lg-photo-main,
+  .lg-photo-small,
+  .lg-visual-card {
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--surface);
+    border: 1px solid rgba(31, 36, 34, 0.08);
+    box-shadow: var(--shadow-card);
+  }
+
+  .lg-photo-main {
+    min-height: 620px;
+  }
+
+  .lg-photo-stack {
+    display: grid;
+    gap: 18px;
+  }
+
+  .lg-photo-small {
+    min-height: 260px;
+  }
+
+  .lg-photo-main img,
+  .lg-photo-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lg-visual-card {
+    padding: 24px;
+    background: linear-gradient(180deg, var(--surface) 0%, #f3eadf 100%);
+  }
+
+  .lg-visual-card-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--berry);
+  }
+
+  .lg-visual-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--green-deep);
+    margin-bottom: 12px;
+  }
+
+  .lg-visual-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .lg-strip {
+    padding: 0 0 88px;
+  }
+
+  .lg-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .lg-strip-card {
+    background: var(--surface-dark);
+    color: white;
+    border-radius: 24px;
+    padding: 26px 22px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .lg-strip-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .lg-strip-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.28rem;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .lg-strip-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+  }
+
+  .lg-section {
+    padding: 0 0 96px;
+  }
+
+  .lg-info {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .lg-info-copy,
+  .lg-hours-card,
+  .lg-menu-card,
+  .lg-quote-card {
+    background: rgba(255, 250, 243, 0.9);
+    border: 1px solid rgba(31, 36, 34, 0.07);
+    box-shadow: var(--shadow-soft);
+    border-radius: 28px;
+  }
+
+  .lg-info-copy {
+    padding: 34px;
+  }
+
+  .lg-info-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--berry);
+  }
+
+  .lg-info-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(143, 79, 77, 0.65);
+  }
+
+  .lg-info-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--green-deep);
+    margin-bottom: 16px;
+  }
+
+  .lg-info-title em {
+    display: block;
+    color: var(--berry);
+    font-style: italic;
+  }
+
+  .lg-info-text {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .lg-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .lg-hours-card,
+  .lg-menu-card,
+  .lg-quote-card {
+    padding: 28px;
+  }
+
+  .lg-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.35rem;
+    color: var(--green-deep);
+    margin-bottom: 16px;
+  }
+
+  .lg-hours-row,
+  .lg-menu-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(31, 36, 34, 0.08);
+  }
+
+  .lg-hours-row:last-child,
+  .lg-menu-row:last-child { border-bottom: none; }
+
+  .lg-hours-day,
+  .lg-menu-name {
+    color: var(--muted);
+    font-size: 0.96rem;
+  }
+
+  .lg-hours-time,
+  .lg-menu-price {
+    color: var(--green-deep);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .lg-hours-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 0 6px rgba(47, 93, 80, 0.08);
+  }
+
+  .lg-address-row,
+  .lg-contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .lg-quote-card {
+    background: linear-gradient(180deg, var(--green-deep) 0%, var(--green) 100%);
+    color: white;
+  }
+
+  .lg-quote-card p {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .lg-quote-card span {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+  }
+
+  .lg-footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.72);
+    margin-top: 14px;
+  }
+
+  .lg-footer-inner {
+    min-height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .lg-footer-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .lg-footer-brand em {
+    color: #f1c4b3;
+    font-style: italic;
+  }
+
+  @media (max-width: 1180px) {
+    .lg-hero-grid,
+    .lg-info {
+      grid-template-columns: 1fr;
     }
-    .lg-tile:nth-child(1) { grid-column: 1/3; grid-row: 1; border-radius: 20px; }
-    .lg-tile:nth-child(4) { grid-column: 1/3; }
-    .lg-info { grid-template-columns: 1fr; gap: 2rem; }
-    .lg-hero { padding-top: 8rem; }
+
+    .lg-strip-grid,
+    .lg-info-grid,
+    .lg-hero-points {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .lg-container { width: min(var(--container), calc(100% - 24px)); }
     .lg-nav-link { display: none; }
-    .lg-footer { flex-direction: column; text-align: center; }
+    .lg-header-inner { min-height: 74px; }
+    .lg-logo-name { font-size: 1.65rem; }
+    .lg-nav-actions { gap: 14px; }
+    .lg-hero { padding: 28px 0 26px; }
+    .lg-hero-grid { min-height: auto; gap: 22px; }
+    .lg-hero-title { font-size: clamp(3rem, 16vw, 4.8rem); }
+    .lg-hero-desc { font-size: 1rem; }
+    .lg-hero-points,
+    .lg-hero-visual,
+    .lg-strip-grid,
+    .lg-info-grid {
+      grid-template-columns: 1fr;
+    }
+    .lg-photo-main { min-height: 340px; }
+    .lg-photo-small { min-height: 220px; }
+    .lg-info-copy,
+    .lg-hours-card,
+    .lg-menu-card,
+    .lg-quote-card { padding: 22px; }
+    .lg-footer-inner { justify-content: flex-start; }
   }
 `;
 
-export default function LokalDemo() {
+const heroPoints = [
+  'Specialty Coffee und hausgemachte Küche',
+  'Stimmiges Interior statt generischer Café-Demo',
+  'Reservierung, Karte und Öffnungszeiten sofort sichtbar',
+];
+
+const stripItems = [
+  {
+    icon: <Coffee size={20} color="#d8b98d" />,
+    title: 'Specialty Coffee',
+    desc: 'Direkt vom Röster, präzise zubereitet und geschmacklich klar positioniert.',
+  },
+  {
+    icon: <Heart size={20} color="#d8b98d" />,
+    title: 'Hausgemacht',
+    desc: 'Bowls, Brunch und Gebäck mit echtem Küchencharakter statt austauschbarer Standardware.',
+  },
+  {
+    icon: <Leaf size={20} color="#d8b98d" />,
+    title: 'Saisonal & modern',
+    desc: 'Zeitgemäße Karte mit vegetarischen und veganen Optionen für ein urbanes Publikum.',
+  },
+  {
+    icon: <MapPin size={20} color="#d8b98d" />,
+    title: 'Mitten in Aachen',
+    desc: 'Zentrale Lage, hohe Sichtbarkeit und ein Auftritt, der nach echtem Lieblingsort aussieht.',
+  },
+];
+
+const menuItems = [
+  { name: 'Flat White', price: '4,20 €' },
+  { name: 'House Bowl', price: '12,90 €' },
+  { name: 'Pistazien-Croissant', price: '4,80 €' },
+  { name: 'Avocado Sourdough', price: '11,50 €' },
+];
+
+const hours = [
+  { day: 'Montag', time: 'Geschlossen' },
+  { day: 'Di – Fr', time: '09:00 – 20:00', open: true },
+  { day: 'Samstag', time: '09:00 – 22:00', open: true },
+  { day: 'Sonntag', time: '10:00 – 18:00', open: true },
+];
+
+export default function LokalPremium() {
   return (
     <div className="lg-root">
       <style>{styles}</style>
 
-      {/* ── FLOATING NAV ── */}
-      <div className="lg-nav-wrap">
-        <nav className="lg-nav">
-          <div className="lg-logo">
-            <span className="lg-logo-name">LokalGenuss</span>
-            <span className="lg-logo-tag">Café · Bistro · Aachen</span>
+      <header className="lg-header">
+        <div className="lg-container lg-header-inner">
+          <div>
+            <div className="lg-logo-name">LokalGenuss</div>
+            <div className="lg-logo-tag">Café · Brunch · Aachen</div>
           </div>
+
           <div className="lg-nav-actions">
-            <a href="#" className="lg-nav-link">Speisekarte</a>
-            <a href="#" className="lg-nav-link">Über uns</a>
-            <a href="#" className="lg-nav-insta"><Instagram size={16} /></a>
-            <a href="#" className="lg-nav-cta">Reservieren</a>
-          </div>
-        </nav>
-      </div>
-
-      {/* ── HERO ── */}
-      <header className="lg-hero">
-        <div className="lg-hero-glow" />
-        <div className="lg-blob lg-blob-1" />
-        <div className="lg-blob lg-blob-2" />
-
-        <div className="lg-hero-content">
-          <div className="lg-award">
-            <div className="lg-award-stars">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} size={11} fill="#c8963c" color="#c8963c" />
-              ))}
-            </div>
-            <span>Bester Service Aachen 2025</span>
-          </div>
-
-          <div className="lg-hero-tagline">
-            <div className="lg-tagline-line" />
-            <span className="lg-tagline-text">Frisch · Hausgemacht · Herzlich</span>
-            <div className="lg-tagline-line" />
-          </div>
-
-          <h1 className="lg-hero-title">
-            Dein neuer
-            <em>Lieblingsort.</em>
-          </h1>
-
-          <p className="lg-hero-desc">
-            Frischer Kaffee, hausgemachte Bowls und die beste Stimmung in der Stadt. 
-            Komm vorbei — und fühl dich wie zuhause.
-          </p>
-
-          <div className="lg-hero-cta-wrap">
-            <button className="lg-btn-primary">
-              Tisch reservieren <ArrowRight size={15} />
-            </button>
-            <a href="#info" className="lg-btn-ghost">
-              Öffnungszeiten ansehen
-            </a>
-          </div>
-        </div>
-
-        {/* Icon pips */}
-        <div className="lg-floating-icons">
-          <div className="lg-icon-pip"><Heart size={20} color="#c4623a" /></div>
-          <div className="lg-icon-pip"><Coffee size={20} color="#7a9475" /></div>
-          <div className="lg-icon-pip"><MapPin size={20} color="#c8963c" /></div>
-        </div>
-
-        {/* MOSAIC */}
-        <div className="lg-mosaic">
-          <div className="lg-tile lg-tile-1">
-            <div className="lg-tile-inner"><span className="lg-tile-label">Handgefertigter Espresso</span></div>
-          </div>
-          <div className="lg-tile lg-tile-2">
-            <div className="lg-tile-inner"><span className="lg-tile-label">Saisonale Bowls</span></div>
-          </div>
-          <div className="lg-tile lg-tile-3">
-            <div className="lg-tile-inner"><span className="lg-tile-label">Vegane Auswahl</span></div>
-          </div>
-          <div className="lg-tile lg-tile-4">
-            <div className="lg-tile-inner"><span className="lg-tile-label">Hausgebäck täglich frisch</span></div>
+            <a href="#karte" className="lg-nav-link">Speisekarte</a>
+            <a href="#besuch" className="lg-nav-link">Besuch</a>
+            <a href="#kontakt" className="lg-nav-link">Kontakt</a>
+            <a href="#" className="lg-nav-insta"><Instagram size={18} /></a>
+            <a href="#kontakt" className="lg-nav-cta">Reservieren</a>
           </div>
         </div>
       </header>
 
-      {/* ── FEATURES STRIP ── */}
-      <div className="lg-features">
-        {[
-          { icon: <Coffee size={18} color="#c8963c" />, title: 'Specialty Coffee', desc: 'Direkt vom Röster, täglich frisch gemahlen.' },
-          { icon: <Heart size={18} color="#c8963c" />, title: 'Hausgemacht', desc: 'Alles aus eigener Küche – ohne Kompromisse.' },
-          { icon: <Star size={18} color="#c8963c" />, title: '5-Sterne-Bewertung', desc: 'Über 400 begeisterte Gäste auf Google.' },
-          { icon: <MapPin size={18} color="#c8963c" />, title: 'Aachen Altstadt', desc: 'Zentral gelegen, gut zu Fuß erreichbar.' },
-        ].map((f) => (
-          <div className="lg-feature" key={f.title}>
-            <div className="lg-feature-icon">{f.icon}</div>
-            <div className="lg-feature-title">{f.title}</div>
-            <div className="lg-feature-desc">{f.desc}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* ── INFO ── */}
-      <div id="info">
-        <div className="lg-info">
-          <div>
-            <div className="lg-info-label">Besuch uns</div>
-            <h2 className="lg-info-title">Ein Ort zum<br/><em>Verweilen.</em></h2>
-            <p className="lg-info-text">
-              Ob kurzer Morgenkaffee, ausgedehntes Mittagessen oder gemütlicher 
-              Nachmittag mit Freunden — bei uns bist du immer willkommen. 
-              Frisch, saisonal, mit Liebe zubereitet.
-            </p>
-            <a href="#" className="lg-btn-primary" style={{fontSize: '0.82rem', display:'inline-flex'}}>
-              Zur Speisekarte <ArrowRight size={14} />
-            </a>
-          </div>
-          <div className="lg-hours-card">
-            <div className="lg-hours-title">
-              <Clock size={16} color="var(--terracotta)" />
-              Öffnungszeiten
-            </div>
-            {[
-              { day: 'Montag', time: 'Geschlossen' },
-              { day: 'Di – Fr', time: '09:00 – 20:00', open: true },
-              { day: 'Samstag', time: '09:00 – 22:00', open: true },
-              { day: 'Sonntag', time: '10:00 – 18:00', open: true },
-            ].map((h) => (
-              <div className="lg-hours-row" key={h.day}>
-                <span className="lg-hours-day">{h.day}</span>
-                <span className="lg-hours-time">
-                  {h.open && <span className="lg-hours-dot" />}
-                  {h.time}
-                </span>
+      <section className="lg-hero">
+        <div className="lg-container lg-hero-grid">
+          <div className="lg-hero-copy">
+            <div className="lg-award">
+              <div className="lg-award-stars">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} size={12} fill="#d9896a" color="#d9896a" />
+                ))}
               </div>
-            ))}
-            <div className="lg-address-row">
-              <MapPin size={14} color="var(--terracotta)" style={{flexShrink: 0, marginTop: 1}} />
-              <span>Altstadtring 4, 52062 Aachen<br/>Parkhaus 200m, Bus direkt vor der Tür</span>
+              <span>Beliebt für Brunch, Kaffee & Atmosphäre</span>
+            </div>
+
+            <div className="lg-hero-tagline">
+              <div className="lg-tagline-line" />
+              <span className="lg-tagline-text">Frisch · Stilvoll · Stadtnah</span>
+              <div className="lg-tagline-line" />
+            </div>
+
+            <h1 className="lg-hero-title">
+              Ein Café, das sich
+              <em>nach Lieblingsort</em>
+              anfühlt.
+            </h1>
+
+            <p className="lg-hero-desc">
+              Specialty Coffee, moderne Brunch-Gerichte und ein Look, der deutlich hochwertiger, urbaner und stimmiger wirkt als die ursprüngliche warme Braun-Optik.
+              Diese Version setzt auf ein frisches, elegantes Farbkonzept mit Grün, Sand und soften Rosé-Tönen statt auf schwere Café-Klischees.
+            </p>
+
+            <div className="lg-hero-cta-wrap">
+              <a href="#kontakt" className="lg-btn-primary">
+                Tisch reservieren <ArrowRight size={16} />
+              </a>
+              <a href="#besuch" className="lg-btn-secondary">
+                Öffnungszeiten ansehen
+              </a>
+            </div>
+
+            <div className="lg-hero-points">
+              {heroPoints.map((item) => (
+                <div className="lg-hero-point" key={item}>
+                  <div className="lg-hero-point-label"><Sparkles size={14} /> Highlight</div>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg-hero-visual">
+            <div className="lg-photo-main">
+              <img
+                src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
+                alt="Modernes Café-Interior mit Kaffee und Gästen"
+              />
+            </div>
+
+            <div className="lg-photo-stack">
+              <div className="lg-photo-small">
+                <img
+                  src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80"
+                  alt="Kaffee und frisches Gebäck auf stilvollem Tisch"
+                />
+              </div>
+
+              <div className="lg-visual-card">
+                <div className="lg-visual-card-label"><UtensilsCrossed size={14} /> Neu gedacht</div>
+                <h3>Frischer. Eleganter. Urbaner.</h3>
+                <p>
+                  Statt Braun, Gold und rustikaler Schwere arbeitet dieses Redesign mit einem moderneren Boutique-Café-Gefühl — heller, designstärker und viel besser für ein junges Stadtpublikum.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── FOOTER ── */}
+      <section className="lg-strip">
+        <div className="lg-container lg-strip-grid">
+          {stripItems.map((item) => (
+            <div className="lg-strip-card" key={item.title}>
+              <div className="lg-strip-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="lg-section" id="besuch">
+        <div className="lg-container lg-info">
+          <div className="lg-info-copy">
+            <div className="lg-info-label">Besuch uns</div>
+            <h2 className="lg-info-title">
+              Brunch, Kaffee und
+              <em>echte Aufenthaltsqualität.</em>
+            </h2>
+            <p className="lg-info-text">
+              Diese Version fühlt sich eher nach einem modernen Lieblingscafé an: ruhigere Farben, edlere Typografie, größere Bildwirkung und klarere Informationsblöcke.
+              Dadurch wirkt die Seite hochwertiger und weniger wie eine generische Gastro-Demo.
+            </p>
+            <a href="#karte" className="lg-btn-primary" style={{ width: 'fit-content' }}>
+              Zur Speisekarte <ArrowRight size={15} />
+            </a>
+          </div>
+
+          <div className="lg-info-grid">
+            <div className="lg-hours-card">
+              <div className="lg-card-title">
+                <Clock size={18} color="#8f4f4d" /> Öffnungszeiten
+              </div>
+              {hours.map((item) => (
+                <div className="lg-hours-row" key={item.day}>
+                  <span className="lg-hours-day">{item.day}</span>
+                  <span className="lg-hours-time">
+                    {item.open && <span className="lg-hours-dot" />}
+                    {item.time}
+                  </span>
+                </div>
+              ))}
+              <div className="lg-address-row">
+                <MapPin size={16} color="#8f4f4d" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>Altstadtring 4, 52062 Aachen<br />Parkhaus 200 m entfernt, ÖPNV direkt in der Nähe</span>
+              </div>
+            </div>
+
+            <div className="lg-menu-card" id="karte">
+              <div className="lg-card-title">
+                <Coffee size={18} color="#8f4f4d" /> Favoriten der Karte
+              </div>
+              {menuItems.map((item) => (
+                <div className="lg-menu-row" key={item.name}>
+                  <span className="lg-menu-name">{item.name}</span>
+                  <span className="lg-menu-price">{item.price}</span>
+                </div>
+              ))}
+              <div className="lg-contact-row">
+                <CalendarDays size={16} color="#8f4f4d" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>Reservierungen für Brunch und größere Gruppen bitte vorab anfragen.</span>
+              </div>
+            </div>
+
+            <div className="lg-quote-card">
+              <p>„Genau der Ort, an den man erst für Kaffee kommt — und dann viel länger bleibt als geplant.“</p>
+              <span>Lieblingsgast · Aachen</span>
+            </div>
+
+            <div className="lg-hours-card" id="kontakt">
+              <div className="lg-card-title">
+                <Phone size={18} color="#8f4f4d" /> Kontakt
+              </div>
+              <div className="lg-contact-row">
+                <Phone size={16} color="#8f4f4d" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>0241 / 12345678</span>
+              </div>
+              <div className="lg-contact-row">
+                <Instagram size={16} color="#8f4f4d" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>@lokalgenuss.aachen</span>
+              </div>
+              <div className="lg-contact-row">
+                <MapPin size={16} color="#8f4f4d" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>Zentral in Aachen, ideal für Frühstück, Lunch und Nachmittagskaffee.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="lg-footer">
-        <div className="lg-footer-brand">LokalGenuss — <em>Café & Bistro</em></div>
-        <div className="lg-footer-note">© 2025 · Impressum · Datenschutz · Instagram</div>
+        <div className="lg-container lg-footer-inner">
+          <div className="lg-footer-brand">LokalGenuss — <em>Café & Brunch</em></div>
+          <div>© 2025 · Impressum · Datenschutz · Instagram</div>
+        </div>
       </footer>
     </div>
   );

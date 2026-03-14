@@ -167,6 +167,7 @@
   border: 1px solid rgba(18, 59, 93, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
+
 }
 
 .reference-card-small:hover {
@@ -178,12 +179,17 @@
   position: relative;
   aspect-ratio: 16 / 10;
   background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 1rem; /* Gibt dem Bild etwas Platz zum Rand */
+  display: flex;
+  align-items: center;
+  justify-content: center;
  
 }
 .demo-preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 .demo-overlay {

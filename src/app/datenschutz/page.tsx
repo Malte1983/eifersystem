@@ -14,7 +14,7 @@ export default function DatenschutzPage() {
           ← Zurück zur Startseite
         </Link>
 
-        <h1>Datenschutzerklärung</h1>
+        <h1 style={{ fontSize: "clamp(2.0rem, 5vw, 2.5rem)" }}>Datenschutzerklärung</h1>
 
         <h2>1. Datenschutz auf einen Blick</h2>
         <h3>Allgemeine Hinweise</h3>

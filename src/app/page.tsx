@@ -379,7 +379,7 @@ export default function HomePage() {
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
           {/* Platzhalter für Screenshot - Pfad anpassen */}
-          <Image src="/references/praxis.png" alt="Demo Praxis" width={400} height={250} />
+          <Image src="/references/praxis2.png" alt="Demo Praxis" width={400} height={250} />
         </div>
         <div className="demo-info">
           <h4>Medizinische Praxis</h4>
@@ -405,7 +405,7 @@ export default function HomePage() {
       <article className="reference-card-small">
         <div className="demo-preview">
           <div className="demo-overlay">Konzept-Studie</div>
-          <Image src="/references/lokal.png" alt="Demo Lokal" width={400} height={250} />
+          <Image src="/references/lokal2.png" alt="Demo Lokal" width={400} height={250} />
         </div>
         <div className="demo-info">
           <h4>Regionales Business</h4>
